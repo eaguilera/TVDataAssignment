@@ -1,0 +1,9 @@
+event_id,user_id,content_id,tenant,event_type,start_time,end_time,device_type
+evt_001,user_123,prog_001,swe,linear,2025-01-15 20:00:00,2025-01-15 20:45:00,tv
+evt_002,user_456,prog_002,fin,catchup,2025-01-15 21:00:00,2025-01-15 21:30:00,mobile
+evt_003,user_789,prog_001,swe,startover,2025-01-15 20:10:00,2025-01-15 21:00:00,tablet
+evt_004,user_123,prog_003,nor,linear,2025-01-15 22:00:00,2025-01-15 22:15:00,tv
+evt_005,user_456,prog_002,fin,catchup,2025-01-15 19:00:00,,mobile
+evt_006,user_789,prog_001,swe,linear,2025-01-15 21:30:00,2025-01-15 20:30:00,tv
+evt_007,user_123,prog_004,swe,linear,2025-01-15 19:00:00,2025-01-15 19:30:00,tv
+evt_008,user_456,prog_002,dnk,catchup,2025-01-15 20:00:00,2025-01-15 20:45:00,mobile

@@ -1,0 +1,41 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw          # PostgreSQL schema where CSVs were loaded
+    description: "Raw CSV-ingested tables for Telia assignment"
+
+    tables:
+      - name: viewing_events
+        description: "Raw viewing events data"
+        columns:
+          - name: event_id
+            tests: [not_null]
+          - name: user_id
+          - name: content_id
+          - name: tenant
+          - name: event_type
+          - name: start_time
+          - name: end_time
+          - name: device_type
+
+      - name: program_metadata
+        description: "Raw program metadata snapshots"
+        columns:
+          - name: program_id
+            tests: [not_null]
+          - name: program_title
+          - name: genre
+          - name: program_duration_minutes
+          - name: snapshot_date
+
+      - name: broadcast_schedule
+        description: "Raw broadcast schedule data"
+        columns:
+          - name: schedule_id
+            tests: [not_null]
+          - name: tenant
+          - name: channel_id
+          - name: program_id
+          - name: broadcast_start
+          - name: broadcast_end

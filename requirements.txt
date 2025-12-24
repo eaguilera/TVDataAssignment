@@ -1,0 +1,13 @@
+# Core
+pyspark==3.5.1
+pandas==2.2.2
+numpy==1.26.4
+
+# Dashboard
+plotly==5.22.0
+
+# Testing
+pytest==8.2.0
+
+# Utilities
+python-dateutil==2.9.0.post0

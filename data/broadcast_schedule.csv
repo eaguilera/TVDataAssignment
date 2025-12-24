@@ -1,0 +1,6 @@
+schedule_id,tenant,channel_id,program_id,broadcast_start,broadcast_end
+sched_001,swe,ch_swe_1,prog_001,2025-01-15 20:00:00,2025-01-15 21:00:00
+sched_002,swe,ch_swe_1,prog_003,2025-01-15 21:00:00,2025-01-15 21:30:00
+sched_003,swe,ch_swe_1,prog_001,2025-01-15 21:15:00,2025-01-15 22:00:00
+sched_004,fin,ch_fin_1,prog_002,2025-01-15 19:00:00,2025-01-15 19:45:00
+sched_005,nor,ch_nor_1,prog_003,2025-01-15 22:00:00,2025-01-15 22:30:00
