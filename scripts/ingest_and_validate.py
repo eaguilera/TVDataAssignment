@@ -127,8 +127,11 @@ def find_schedule_matches(viewing_df: DataFrame, schedule_df: DataFrame) -> Data
         & (linear_events["start_time_ts"] <= schedule_df["broadcast_end_ts"])
     )
 
+    # Add schedule_small to accoubt for skewed data
+    schedule_small = F.broadcast(schedule_df)
     matched_events = (
-        linear_events.join(schedule_df, join_cond, "inner")
+        # linear_events.join(schedule_df, join_cond, "inner")
+        linear_events.join(schedule_small, join_cond, "inner")
         .select("event_id")
         .dropDuplicates()
         .withColumn("has_schedule_match", F.lit(True))
@@ -206,7 +209,10 @@ def enrich_with_program_metadata(
         & (valid_events["start_time_ts"] <= program_df["valid_to_ts"])
     )
 
-    enriched = valid_events.join(program_df, scd_join_cond, "left")
+    # Account for skewed data
+    program_small = F.broadcast(program_df)
+    # enriched = valid_events.join(program_df, scd_join_cond, "left")
+    enriched = valid_events.join(program_small, scd_join_cond, "left")
 
     enriched = enriched.withColumn(
         "viewing_duration_minutes",
@@ -321,6 +327,9 @@ def main() -> None:
         spark = (
             SparkSession.builder
             .appName("tv-data-assignment-task-1a-1b-1c")
+            .config("spark.sql.adaptive.enabled", "true")
+            .config("spark.sql.adaptive.skewJoin.enabled", "true")
+            .config("spark.sql.shuffle.partitions", "200")  # tune as needed
             .getOrCreate()
         )
 
