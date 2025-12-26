@@ -1,6 +1,6 @@
 ![CI](https://github.com/eaguilera/TVDataAssignment/actions/workflows/ci.yml/badge.svg)
 ![Dashboard](https://img.shields.io/badge/Dashboard-Live-brightgreen)
-# Assignment_Telia
+# Sample Assignment. Based on a real assignment
 # TV Data Engineering Assignment
 
 Author:
