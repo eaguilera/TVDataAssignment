@@ -1,4 +1,4 @@
-![CI](https://github.com/eaguilera/Assignment_Telia/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/eaguilera/TVDataAssignment/actions/workflows/ci.yml/badge.svg)
 
 ## Data Quality Dashboard & CI/CD
 
@@ -8,7 +8,7 @@
 ![Data Quality Dashboard](screenshot.png)
 
 🔗 Live link:
-https://eaguilera.github.io/Assignment_Telia/
+https://eaguilera.github.io/TVDataAssignment/
 
 ------------------------------------------------------------------------
 

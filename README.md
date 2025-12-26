@@ -1,4 +1,4 @@
-![CI](https://github.com/eaguilera/Assignment_Telia/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/eaguilera/TVDataAssignment/actions/workflows/ci.yml/badge.svg)
 ![Dashboard](https://img.shields.io/badge/Dashboard-Live-brightgreen)
 # Assignment_Telia
 # TV Data Engineering Assignment
@@ -8,7 +8,7 @@ Author:
     Eng. Emerick Aguilera Gonzalez
 
 This repository contains the solution for the **TV Viewing Analytics
-Pipeline** technical assignment.\
+Pipeline** assignment.\
 The pipeline simulates a real-world streaming/linear TV data platform
 covering:
 
