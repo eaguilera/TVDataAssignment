@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
-#----------------------------------
+#
 # Program designed and executed by 
 # Eng. Emerick Aguilera Gonzalez
 # 2025-12
-#----------------------------------
+#
 
 from __future__ import annotations 
 
