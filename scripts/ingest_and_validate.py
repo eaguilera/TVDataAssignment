@@ -104,20 +104,6 @@ def find_schedule_matches(viewing_df: DataFrame, schedule_df: DataFrame) -> Data
 
     # Execute the WHERE clause of the query 
 
-    """
-    schedule_matches AS (
-        SELECT DISTINCT
-            v.event_id,
-            TRUE AS has_schedule_match
-        FROM viewing_events v
-        JOIN broadcast_schedule b
-        ON v.tenant     = b.tenant
-        AND v.content_id = b.program_id
-        AND v.start_time_ts >= b.broadcast_start_ts
-        AND v.start_time_ts <=  b.broadcast_end_ts
-        WHERE v.event_type = 'linear'
-    )
-    """
     linear_events = viewing_df.filter(F.col("event_type") == "linear")
 
     join_cond = (
@@ -151,15 +137,6 @@ def find_schedule_matches(viewing_df: DataFrame, schedule_df: DataFrame) -> Data
 # -------------------------------------------------------------------
 
 def apply_validation_rules(df: DataFrame) -> DataFrame:
-
-    """
-    is_missing_end_time = F.col("end_time_ts").isNull()
-    is_negative_duration = F.col("end_time_ts") < F.col("start_time_ts")
-    is_invalid_tenant = ~F.col("tenant").isin(VALID_TENANTS)
-    is_orphan_linear = (
-        (F.col("event_type") == "linear") & (~F.col("has_schedule_match"))
-    )
-    """
 
     validation_reasons = F.expr("""
       filter(
