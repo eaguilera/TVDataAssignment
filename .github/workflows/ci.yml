@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          # Ensure test & dashboard deps exist even if not in requirements.txt
+          pip install pytest pyspark plotly pandas pyarrow
+
+      - name: Lint (optional)
+        run: |
+          pip install flake8
+          flake8 . \
+            --max-line-length=120 \
+            --ignore=W191,E101,E116,W291,W293,W503,E121,E131,E302,E712,F841,F401,E303
+
+      - name: Smoke-test dashboard (optional)
+        run: |
+          # Only run if output exists – do not fail the build if it doesn't.
+          if [ -d "output/validation_summary.json" ]; then
+            python dashboard/generate_data_quality_dashboard.py --summary-dir output/validation_summary.json --parquet-dir output/enriched_events.parquet 
+          else
+            echo "No Spark output present; skipping dashboard smoke test."
+          fi
